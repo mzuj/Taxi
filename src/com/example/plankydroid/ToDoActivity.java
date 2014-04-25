@@ -50,11 +50,6 @@ public class ToDoActivity extends Activity implements
 	private ToDoItemAdapter mAdapter;
 
 	/**
-	 * EditText containing the "New ToDo" text
-	 */
-	private EditText mTextNewToDo;
-
-	/**
 	 * Progress spinner to use for table operations
 	 */
 	private ProgressBar mProgressBar;
@@ -95,8 +90,6 @@ public class ToDoActivity extends Activity implements
 			// Get the Mobile Service Table instance to use
 			mToDoTable = mClient.getTable(ToDoItem.class);
 
-			mTextNewToDo = (EditText) findViewById(R.id.textNewToDo);
-
 			// Create an adapter to bind the items with the view
 			mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
 			ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
@@ -125,23 +118,25 @@ public class ToDoActivity extends Activity implements
 	/**
 	 * Initializes the activity menu
 	 */
+	/*
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
-
+	*/
 	/**
 	 * Select an option from the menu
 	 */
+	/*
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.menu_refresh) {
 			refreshItemsFromTable();
 		}
-
 		return true;
 	}
+	*/
 
 	/**
 	 * Mark an item as completed
@@ -149,6 +144,7 @@ public class ToDoActivity extends Activity implements
 	 * @param item
 	 *            The item to mark
 	 */
+	/*
 	public void checkItem(ToDoItem item) {
 		if (mClient == null) {
 			return;
@@ -172,6 +168,7 @@ public class ToDoActivity extends Activity implements
 
 		});
 	}
+	*/
 
 	/**
 	 * Add a new item
@@ -179,6 +176,7 @@ public class ToDoActivity extends Activity implements
 	 * @param view
 	 *            The view that originated the call
 	 */
+	/*
 	public void addItem(View view) {
 		if (mClient == null) {
 			return;
@@ -208,11 +206,12 @@ public class ToDoActivity extends Activity implements
 		});
 
 		mTextNewToDo.setText("");
-	}
+	} */
 
 	/**
 	 * Refresh the list with the items in the Mobile Service Table
 	 */
+	/*
 	private void refreshItemsFromTable() {
 
 		// Get the items that weren't marked as completed and add them in the
@@ -235,6 +234,7 @@ public class ToDoActivity extends Activity implements
 					}
 				});
 	}
+	*/
 
 	private void getItemsWithStatus(boolean status) {
 		mToDoTable.where().field("complete").eq(status)

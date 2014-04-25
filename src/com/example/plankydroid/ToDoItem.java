@@ -17,11 +17,6 @@ public class ToDoItem {
 	@com.google.gson.annotations.SerializedName("id")
 	private String mId;
 
-	/**
-	 * Indicates if the item is completed
-	 */
-	@com.google.gson.annotations.SerializedName("complete")
-	private boolean mComplete;
 
 	/**
 	 * ToDoItem constructor
@@ -82,19 +77,6 @@ public class ToDoItem {
 		mId = id;
 	}
 
-	/**
-	 * Indicates if the item is marked as completed
-	 */
-	public boolean isComplete() {
-		return mComplete;
-	}
-
-	/**
-	 * Marks the item as completed or incompleted
-	 */
-	public void setComplete(boolean complete) {
-		mComplete = complete;
-	}
 
 	@Override
 	public boolean equals(Object o) {

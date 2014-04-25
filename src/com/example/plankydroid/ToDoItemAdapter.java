@@ -50,8 +50,8 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 		checkBox.setChecked(false);
 		checkBox.setEnabled(true);
 
+		/*
 		checkBox.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View arg0) {
 				if (checkBox.isChecked()) {
@@ -63,8 +63,8 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 				}
 			}
 		});
+		 */
 
 		return row;
 	}
-
 }
