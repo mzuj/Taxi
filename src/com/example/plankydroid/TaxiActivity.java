@@ -31,23 +31,23 @@ import com.microsoft.windowsazure.mobileservices.ServiceFilterResponseCallback;
 import com.microsoft.windowsazure.mobileservices.TableOperationCallback;
 import com.microsoft.windowsazure.mobileservices.TableQueryCallback;
 
-public class ToDoActivity extends Activity implements
+public class TaxiActivity extends Activity implements
 		ActionBar.OnNavigationListener {
 
 	/**
 	 * Mobile Service Client reference
 	 */
 	private MobileServiceClient mClient;
-
+ 
 	/**
 	 * Mobile Service Table used to access data
 	 */
-	private MobileServiceTable<ToDoItem> mToDoTable;
+	private MobileServiceTable<TaxiItem> mToDoTable;
 
 	/**
 	 * Adapter to sync the items list with the view
 	 */
-	private ToDoItemAdapter mAdapter;
+	private TaxiItemAdapter mAdapter;
 
 	/**
 	 * Progress spinner to use for table operations
@@ -88,10 +88,10 @@ public class ToDoActivity extends Activity implements
 					.withFilter(new ProgressFilter());
 
 			// Get the Mobile Service Table instance to use
-			mToDoTable = mClient.getTable(ToDoItem.class);
+			mToDoTable = mClient.getTable(TaxiItem.class);
 
 			// Create an adapter to bind the items with the view
-			mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
+			mAdapter = new TaxiItemAdapter(this, R.layout.row_list_to_do);
 			ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
 			listViewToDo.setAdapter(mAdapter);
 
@@ -236,16 +236,16 @@ public class ToDoActivity extends Activity implements
 	}
 	*/
 
-	private void getItemsWithStatus(boolean status) {
-		mToDoTable.where().field("complete").eq(status)
-				.execute(new TableQueryCallback<ToDoItem>() {
+	private void getItemsWithId(int id) {
+		mToDoTable.where().field("CityItemId").eq(id)
+				.execute(new TableQueryCallback<TaxiItem>() {
 
-					public void onCompleted(List<ToDoItem> result, int count,
+					public void onCompleted(List<TaxiItem> result, int count,
 							Exception exception, ServiceFilterResponse response) {
 						if (exception == null) {
 							mAdapter.clear();
 
-							for (ToDoItem item : result) {
+							for (TaxiItem item : result) {
 								mAdapter.add(item);
 							}
 
@@ -331,9 +331,9 @@ public class ToDoActivity extends Activity implements
 	public boolean onNavigationItemSelected(int arg0, long arg1) {
 		// When the given dropdown item is selected, show its contents in the
 		// container view.
-		boolean isCompleted = switchStatus(arg0);
+		//int cityId = switchCity(arg0);
 
-		getItemsWithStatus(isCompleted);
+		getItemsWithId(arg0+1);
 
 		return true;
 	}

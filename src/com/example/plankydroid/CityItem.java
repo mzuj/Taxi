@@ -3,31 +3,28 @@ package com.example.plankydroid;
 /**
  * Represents an item in a ToDo list
  */
-public class ToDoItem {
+public class CityItem {
 
-	/**
-	 * Item text
-	 */
-	@com.google.gson.annotations.SerializedName("text")
-	private String mText;
+
+	@com.google.gson.annotations.SerializedName("name")
+	private String mName;
 
 	/**
 	 * Item Id
 	 */
 	@com.google.gson.annotations.SerializedName("id")
-	private String mId;
-
-
+	private int mId;
+	
 	/**
 	 * ToDoItem constructor
 	 */
-	public ToDoItem() {
+	public CityItem() {
 
 	}
 
 	@Override
 	public String toString() {
-		return getText();
+		return getName();
 	}
 
 	/**
@@ -38,16 +35,16 @@ public class ToDoItem {
 	 * @param id
 	 *            The item id
 	 */
-	public ToDoItem(String text, String id) {
-		this.setText(text);
+	public CityItem(String text, int id) {
+		this.setName(text);
 		this.setId(id);
 	}
 
 	/**
 	 * Returns the item text
 	 */
-	public String getText() {
-		return mText;
+	public String getName() {
+		return mName;
 	}
 
 	/**
@@ -56,14 +53,14 @@ public class ToDoItem {
 	 * @param text
 	 *            text to set
 	 */
-	public final void setText(String text) {
-		mText = text;
+	public final void setName(String name) {
+		mName = name;
 	}
 
 	/**
 	 * Returns the item id
 	 */
-	public String getId() {
+	public int getId() {
 		return mId;
 	}
 
@@ -73,13 +70,13 @@ public class ToDoItem {
 	 * @param id
 	 *            id to set
 	 */
-	public final void setId(String id) {
+	public final void setId(int id) {
 		mId = id;
 	}
 
 
 	@Override
 	public boolean equals(Object o) {
-		return o instanceof ToDoItem && ((ToDoItem) o).mId == mId;
+		return o instanceof CityItem && ((CityItem) o).mId == mId;
 	}
 }

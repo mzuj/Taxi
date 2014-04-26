@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 /**
  * Adapter to bind a ToDoItem List to a view
  */
-public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
+public class TaxiItemAdapter extends ArrayAdapter<TaxiItem> {
 
 	/**
 	 * Adapter context
@@ -23,7 +24,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 	 */
 	int mLayoutResourceId;
 
-	public ToDoItemAdapter(Context context, int layoutResourceId) {
+	public TaxiItemAdapter(Context context, int layoutResourceId) {
 		super(context, layoutResourceId);
 
 		mContext = context;
@@ -37,7 +38,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 
-		final ToDoItem currentItem = getItem(position);
+		final TaxiItem currentItem = getItem(position);
 
 		if (row == null) {
 			LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
@@ -45,10 +46,19 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 		}
 
 		row.setTag(currentItem);
-		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
-		checkBox.setText(currentItem.getText());
-		checkBox.setChecked(false);
-		checkBox.setEnabled(true);
+		//final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
+		//checkBox.setText(currentItem.getText());
+		//checkBox.setChecked(false);
+		//checkBox.setEnabled(true);
+		
+		final TextView text = (TextView) row.findViewById(R.id.textView1);
+		text.setText(currentItem.getText());
+		
+		final TextView tel = (TextView) row.findViewById(R.id.textView3);
+		tel.setText(currentItem.getTel());
+		
+		final TextView price1 = (TextView) row.findViewById(R.id.textView2);
+		price1.setText(currentItem.getPrice1());
 
 		/*
 		checkBox.setOnClickListener(new View.OnClickListener() {
